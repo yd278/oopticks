@@ -59,6 +59,11 @@ public class Pattern implements Comparable<Pattern>, Cloneable{
         return mAuthor;
     }
 
+    @Override
+    public String toString(){
+        return getName() + " (" + getAuthor() + ")";
+    }
+
     int getWidth() {
         return mWidth;
     }

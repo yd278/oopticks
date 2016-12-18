@@ -43,7 +43,11 @@ public class GUILife extends JFrame {
     private JPanel createPatternsPanel() {
         JPanel patt = new JPanel();
         addBorder(patt,"Patterns");
-        // TODO
+        patt.setLayout(new BorderLayout());
+        JList<Object> pattList = new JList<>();
+        pattList.setListData(mStore.getPatternsNameSorted().toArray());
+        JScrollPane jScrollPane = new JScrollPane(pattList);
+        patt.add(jScrollPane);
         return patt;
     }
 
