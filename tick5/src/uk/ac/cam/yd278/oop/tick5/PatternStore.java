@@ -120,4 +120,7 @@ public class PatternStore {
         Collections.sort(res);
         return res;
     }
+    public int getSize(){
+        return mPatterns.size();
+    }
 }

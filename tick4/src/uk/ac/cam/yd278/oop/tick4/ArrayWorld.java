@@ -33,14 +33,14 @@ public class ArrayWorld extends World implements Cloneable{
     }
     public ArrayWorld(ArrayWorld mArrayWorld) {
         super(mArrayWorld);
-        mWorld = new boolean[mArrayWorld.getHeight()][mArrayWorld.getWidth()];
+        mWorld = new boolean[getHeight()][getWidth()];
         mDeadRow = mArrayWorld.getDead();
-        for (int i = 0; i < mArrayWorld.getHeight(); i++) {
-            for (int j = 0; j < mArrayWorld.getWidth(); j++) {
+        for (int i = 0; i < getHeight(); i++) {
+            for (int j = 0; j < getWidth(); j++) {
                 mWorld[i][j] = mArrayWorld.getCell(j, i);
             }
         }
-
+        compDeadRow();
     }
     public boolean[] getDead(){
         return mDeadRow;
@@ -87,7 +87,10 @@ public class ArrayWorld extends World implements Cloneable{
         ArrayWorld copy = (ArrayWorld) super.clone();
         boolean[][] newWorld = new boolean[getHeight()][getWidth()];
         for(int i = 0; i < getHeight(); i++){
-            for(int j = 0; j < getWidth(); j++){
+            if (mWorld[i] == mDeadRow){
+                newWorld[i] = mDeadRow;
+            }
+            for (int j = 0; j < getWidth(); j++){
                 newWorld[i][j] = mWorld[i][j];
             }
         }
