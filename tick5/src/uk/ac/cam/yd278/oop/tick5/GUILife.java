@@ -68,10 +68,13 @@ public class GUILife extends JFrame {
         patt.setLayout(new BorderLayout());
         JList<Pattern> pattList = new JList<>();
         int storeSize = mStore.getSize();
-        pattList.setListData(mStore.getPatternsNameSorted().toArray(new Pattern[mStore.getSize()]));
+        pattList.setListData(mStore.getPatternsNameSorted().toArray(new Pattern[storeSize]));
         pattList.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
+                if(mPlaying){
+                    runOrPause();
+                }
                 JList<Pattern> list = (JList<Pattern>) e.getSource();
                 Pattern p = (Pattern) list.getSelectedValue();
                 try {
